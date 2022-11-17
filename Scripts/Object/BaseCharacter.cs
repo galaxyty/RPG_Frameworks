@@ -59,5 +59,11 @@ namespace BaseRPG_V1
         {
             m_Hp = 0;
         }
+
+        // 풀 오브젝트 Pop 할 때마다 실행.
+        public abstract void Initialization();
+
+        // 풀 오브젝트 Push 할 때마다 실행.
+        public abstract void DisposeObject();
     }
 }

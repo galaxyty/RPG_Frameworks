@@ -79,6 +79,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         // 비활성화 리스트 제거.
         m_PoolDisable.Remove(component);
 
+        component.Initialization();
         component.gameObject.SetActive(true);
 
         return component;
@@ -93,6 +94,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         // 활성화 리스트에서 제거.
         m_PoolEnable.Remove(obj);
 
+        obj.DisposeObject();
         obj.gameObject.SetActive(false);
     }
 }
