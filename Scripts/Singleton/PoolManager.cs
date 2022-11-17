@@ -12,8 +12,12 @@ public class PoolManager : BaseSingleton<PoolManager>
     private List<BaseCharacter> m_PoolEnable = new List<BaseCharacter>();
 
     // 풀 오브젝트 생성.
-    public void Create<T>(string path) where T : BaseCharacter
+    public void Create<T>(string path, int count = 1) where T : BaseCharacter
     {
+        // 재귀함수 종료.
+        if (count-- <= 0)
+            return;
+
         BaseCharacter component = null;
 
         // 리소스.
@@ -41,7 +45,10 @@ public class PoolManager : BaseSingleton<PoolManager>
         }
 
         // 비활성화 리스트 추가.
-        m_PoolDisable.Add(component);
+        m_PoolDisable.Add(component);        
+        
+        // 갯수만큼 생성.
+        Create<T>(path, count);
     }
 
     // 풀 오브젝트에서 가져온다.
