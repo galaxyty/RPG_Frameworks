@@ -35,13 +35,8 @@ public class BasePlayerCharacter : BaseCharacter
     protected int m_Speed;
 
     // 자신 리지드바디.
+    [SerializeField]
     protected Rigidbody m_Rigidbody;
-
-    //TODO:: 임시.
-    private void Awake() 
-    {
-        m_Rigidbody = GetComponent<Rigidbody>();
-    }
 
     public override void Initialization()
     {
