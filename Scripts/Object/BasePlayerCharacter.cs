@@ -27,14 +27,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using BaseRPG_V1;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BasePlayerCharacter : BaseCharacter
 {
     // 이동속도.
     [SerializeField]
     protected int m_Speed;
 
+    // 자신 리지드바디.
+    protected Rigidbody m_Rigidbody;
+
+    //TODO:: 임시.
+    private void Awake() 
+    {
+        m_Rigidbody = GetComponent<Rigidbody>();
+    }
+
     public override void Initialization()
     {
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
 
     public override void DisposeObject()
@@ -104,8 +115,8 @@ public class BasePlayerCharacter : BaseCharacter
 
     // 앞 움직임.
     public virtual void W_Key()
-    {
-        transform.Translate(Vector3.forward * m_Speed * Time.deltaTime);
+    {        
+        m_Rigidbody.velocity = Vector3.forward * m_Speed * Time.deltaTime;
     }
 
     // 앞 움직임 키 뗐을 시.
@@ -116,7 +127,7 @@ public class BasePlayerCharacter : BaseCharacter
     // 뒤 움직임.
     public virtual void S_Key()
     {
-        transform.Translate(Vector3.back * m_Speed * Time.deltaTime);
+        m_Rigidbody.velocity = Vector3.back * m_Speed * Time.deltaTime;
     }
 
     // 뒤 움직임 키 뗏을 시.
@@ -127,7 +138,7 @@ public class BasePlayerCharacter : BaseCharacter
     // 왼쪽 움직임.
     public virtual void A_Key()
     {
-        transform.Translate(Vector3.left * m_Speed * Time.deltaTime);
+        m_Rigidbody.velocity = Vector3.left * m_Speed * Time.deltaTime;
     }
 
     // 왼쪽 움직임 키 뗏을 시.
@@ -138,7 +149,7 @@ public class BasePlayerCharacter : BaseCharacter
     // 오른쪽 움직임.
     public virtual void D_Key()
     {
-        transform.Translate(Vector3.right * m_Speed * Time.deltaTime);
+        m_Rigidbody.velocity = Vector3.right * m_Speed * Time.deltaTime;
     }
 
     // 오른쪽 움직임 키 뗏을 시.
