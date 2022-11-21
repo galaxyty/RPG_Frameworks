@@ -111,44 +111,48 @@ public class BasePlayerCharacter : BaseCharacter
     // 앞 움직임.
     public virtual void W_Key()
     {        
-        m_Rigidbody.velocity = Vector3.forward * m_Speed;
+        m_Rigidbody.velocity = transform.rotation * Vector3.forward * m_Speed;
     }
 
     // 앞 움직임 키 뗐을 시.
     public virtual void W_KeyUp()
     {
+        m_Rigidbody.velocity = Vector3.zero;
     }
 
     // 뒤 움직임.
     public virtual void S_Key()
     {
-        m_Rigidbody.velocity = Vector3.back * m_Speed;
+        m_Rigidbody.velocity = transform.rotation * Vector3.back * m_Speed;
     }
 
     // 뒤 움직임 키 뗏을 시.
     public virtual void S_KeyUp()
     {
+        m_Rigidbody.velocity = Vector3.zero;
     }
 
     // 왼쪽 움직임.
     public virtual void A_Key()
     {
-        m_Rigidbody.velocity = Vector3.left * m_Speed;
+        m_Rigidbody.velocity = transform.rotation * Vector3.left * m_Speed;
     }
 
     // 왼쪽 움직임 키 뗏을 시.
     public virtual void A_KeyUp()
-    {        
+    {
+        m_Rigidbody.velocity = Vector3.zero;
     }
 
     // 오른쪽 움직임.
     public virtual void D_Key()
     {
-        m_Rigidbody.velocity = Vector3.right * m_Speed;
+        m_Rigidbody.velocity = transform.rotation * Vector3.right * m_Speed;
     }
 
     // 오른쪽 움직임 키 뗏을 시.
     public virtual void D_KeyUp()
     {
+        m_Rigidbody.velocity = Vector3.zero;
     }
 }
