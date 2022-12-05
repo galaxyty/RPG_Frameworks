@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using BaseRPG_V1;
 
 public class TableManager : BaseSingleton<TableManager>
@@ -11,24 +9,12 @@ public class TableManager : BaseSingleton<TableManager>
     private Dictionary<string, TextAsset> m_Dic = new Dictionary<string, TextAsset>();
 
     // 테이블 생성 구간.
-    public void Init()
+    public void Add(string key, TextAsset asset)
     {
-        Parse<Test>("TEST");
+        m_Dic.Add(key, asset);
     }
 
-    // 어드레서블 에셋에서 딕셔너리 캐싱 테이블 생성.
-    private void Parse<T>(string key)
-    {
-        TextAsset text = null;
-
-        Addressables.LoadAssetAsync<TextAsset>(key).Completed += (AsyncOperationHandle<TextAsset> obj) =>
-        {
-            text = obj.Result;
-
-            m_Dic.Add(key, text);
-        };
-    }
-
+    // 테스트용 테이블.
     public Test GetTestData()
     {
         var table = GetTable<Test>("TEST");

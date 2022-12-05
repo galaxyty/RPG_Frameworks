@@ -9,7 +9,7 @@ namespace BaseRPG_V1
     {
         private static T m_Instance = null;
 
-        public static T Instantce
+        public static T Instance
         {
             get
             {
