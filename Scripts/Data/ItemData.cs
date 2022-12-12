@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Test
+public class ItemData
 {
     // 아이디.
-    public string ID;
+    public int INDEX;
+
+    // 아이템 이름.
+    public string ITEM_NAME;
 }
