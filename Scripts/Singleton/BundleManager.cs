@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,9 +23,6 @@ public class BundleManager : BaseSingleton<BundleManager>
         // Characters 테이블 초기화.
         Addressables.DownloadDependenciesAsync(Constants.kLABLE.characters.ToString()).Completed += (AsyncOperationHandle handle) =>
         {
-            // 플레이어 생성.
-            InstantiateAsync(Constants.kBUNDLE.PLAYER.ToString());
-
             Addressables.Release(handle);
         };
     }
@@ -41,14 +39,10 @@ public class BundleManager : BaseSingleton<BundleManager>
         };
     }
 
-    // key 오브젝트 씬에 생성.
-    public void InstantiateAsync(string key)
-    {
-        Addressables.InstantiateAsync(key).Completed += (AsyncOperationHandle<GameObject> obj) => 
-        {
-            GameObject o = obj.Result;
-
-            Debug.Log(o.name);
-        };
+    // key 오브젝트 씬에 생성 (동기).
+    public void Instantiate(string key, Action<GameObject> callback)
+    {        
+        var obj = Addressables.InstantiateAsync(key).WaitForCompletion();
+        callback(obj);
     }
 }

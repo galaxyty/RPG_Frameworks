@@ -12,7 +12,7 @@ public class PoolManager : BaseSingleton<PoolManager>
     private List<BaseCharacter> m_PoolEnable = new List<BaseCharacter>();
 
     // 풀 오브젝트 생성.
-    public void Create<T>(string path, int count = 1) where T : BaseCharacter
+    public void Create<T>(string key, int count = 1) where T : BaseCharacter
     {
         // 재귀함수 종료.
         if (count-- <= 0)
@@ -20,35 +20,37 @@ public class PoolManager : BaseSingleton<PoolManager>
 
         BaseCharacter component = null;
 
-        // 리소스.
-        GameObject resource = Resources.Load(path) as GameObject;
-
-        // 리소스 null 체크.
-        if (resource == null)
+        // 번들에서 프리팹 생성.
+        BundleManager.Instance.Instantiate(key, (GameObject obj) => 
         {
-            Debug.Log("@@ " + path + "오브젝트가 존재하지 않아 생성할 수 없습니다");
-            return;
-        }
-        
-        // 오브젝트 생성.
-        var obj = Instantiate(resource, transform);
-        obj.SetActive(false);
+            // null 체크.
+            if (obj == null)
+            {
+                Debug.Log("@@ " + key + "오브젝트가 존재하지 않아 생성할 수 없습니다");
+                return;
+            }
+            
+            // 오브젝트 풀매니저로 기본 부모 설정.
+            obj.transform.SetParent(transform);
+            // 오브젝트 비활성화.
+            obj.SetActive(false);
 
-        // 컴포넌트 가져옴.
-        component = obj.GetComponent<T>();
+            // 컴포넌트 가져옴.
+            component = obj.GetComponent<T>();
 
-        // 컴포넌트 null 체크.
-        if (component == null)
-        {
-            Debug.Log("@@ " + obj.name + " 프리팹에서 컴포넌트가 존재하지 않아 생성할 수 없습니다");
-            return;
-        }
+            // 컴포넌트 null 체크.
+            if (component == null)
+            {
+                Debug.Log("@@ " + obj.name + " 프리팹에서 컴포넌트가 존재하지 않아 생성할 수 없습니다");
+                return;
+            }
 
-        // 비활성화 리스트 추가.
-        m_PoolDisable.Add(component);        
-        
-        // 갯수만큼 생성.
-        Create<T>(path, count);
+            // 비활성화 리스트 추가.
+            m_PoolDisable.Add(component);
+
+            // 갯수만큼 생성.
+            Create<T>(key, count);
+        });
     }
 
     // 풀 오브젝트에서 가져온다.
