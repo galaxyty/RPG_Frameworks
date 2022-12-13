@@ -18,6 +18,15 @@ public class BundleManager : BaseSingleton<BundleManager>
 
             Addressables.Release(handle);
         };
+
+        // Characters 테이블 초기화.
+        Addressables.DownloadDependenciesAsync(Constants.kLABLE.characters.ToString()).Completed += (AsyncOperationHandle handle) =>
+        {
+            // 플레이어 생성.
+            InstantiateAsync(Constants.kBUNDLE.PLAYER.ToString());
+
+            Addressables.Release(handle);
+        };
     }
 
     // scripts 레이블에서 해당 key 번들 로드.
@@ -28,7 +37,13 @@ public class BundleManager : BaseSingleton<BundleManager>
         {
             TextAsset text = obj.Result;
 
-            TableManager.Instance.Add(key, text);
+            TableManager.Instance.Add(key, text);            
         };
+    }
+
+    // key 오브젝트 씬에 생성.
+    public void InstantiateAsync(string key)
+    {
+        Addressables.InstantiateAsync(key);
     }
 }
