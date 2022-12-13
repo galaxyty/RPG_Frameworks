@@ -44,6 +44,11 @@ public class BundleManager : BaseSingleton<BundleManager>
     // key 오브젝트 씬에 생성.
     public void InstantiateAsync(string key)
     {
-        Addressables.InstantiateAsync(key);
+        Addressables.InstantiateAsync(key).Completed += (AsyncOperationHandle<GameObject> obj) => 
+        {
+            GameObject o = obj.Result;
+
+            Debug.Log(o.name);
+        };
     }
 }
