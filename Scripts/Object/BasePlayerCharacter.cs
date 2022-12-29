@@ -111,7 +111,7 @@ public class BasePlayerCharacter : BaseCharacter
     // 앞 움직임.
     public virtual void W_Key()
     {        
-        m_Rigidbody.velocity = transform.rotation * new Vector3(0, m_Rigidbody.velocity.y, m_Speed);
+        m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, m_Speed);
     }
 
     // 앞 움직임 키 뗐을 시.
@@ -123,7 +123,7 @@ public class BasePlayerCharacter : BaseCharacter
     // 뒤 움직임.
     public virtual void S_Key()
     {
-        m_Rigidbody.velocity = transform.rotation * new Vector3(0, m_Rigidbody.velocity.y, -m_Speed);
+        m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, -m_Speed);
     }
 
     // 뒤 움직임 키 뗏을 시.
@@ -135,7 +135,7 @@ public class BasePlayerCharacter : BaseCharacter
     // 왼쪽 움직임.
     public virtual void A_Key()
     {
-        m_Rigidbody.velocity = transform.rotation * new Vector3(-m_Speed, m_Rigidbody.velocity.y, 0);
+        m_Rigidbody.velocity = transform.rotation * new Vector3(-m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
     }
 
     // 왼쪽 움직임 키 뗏을 시.
@@ -147,7 +147,7 @@ public class BasePlayerCharacter : BaseCharacter
     // 오른쪽 움직임.
     public virtual void D_Key()
     {
-        m_Rigidbody.velocity = transform.rotation * new Vector3(m_Speed, m_Rigidbody.velocity.y, 0);
+        m_Rigidbody.velocity = transform.rotation * new Vector3(m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
     }
 
     // 오른쪽 움직임 키 뗏을 시.
