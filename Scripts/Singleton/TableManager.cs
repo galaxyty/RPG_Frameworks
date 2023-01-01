@@ -16,7 +16,7 @@ public class TableManager : BaseSingleton<TableManager>
         return table;
     }
 
-    // Key 테이블 반환.
+    // 해당 Key 테이블 반환.
     private T GetTable<T>(string key)
     {    
         TextAsset text = BundleManager.Instance.LoadToScripts(key);

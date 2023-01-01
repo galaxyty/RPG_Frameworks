@@ -32,6 +32,7 @@ public class PoolManager : BaseSingleton<PoolManager>
             
             // 오브젝트 풀매니저로 기본 부모 설정.
             obj.transform.SetParent(transform);
+            
             // 오브젝트 비활성화.
             obj.SetActive(false);
 
