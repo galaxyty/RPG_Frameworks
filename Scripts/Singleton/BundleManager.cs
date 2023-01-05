@@ -17,7 +17,7 @@ public class BundleManager : BaseSingleton<BundleManager>
 
     // key 오브젝트 씬에 생성 (동기).
     public void Instantiate(string key, Action<GameObject> callback)
-    {        
+    {
         GameObject obj = Addressables.InstantiateAsync(key).WaitForCompletion();
 
         callback(obj);
