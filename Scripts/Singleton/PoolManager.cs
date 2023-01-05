@@ -55,7 +55,7 @@ public class PoolManager : BaseSingleton<PoolManager>
     }
 
     // 풀 오브젝트에서 가져온다.
-    public BaseCharacter Pop<T>() where T : BaseCharacter
+    public BaseCharacter Pop<T>(Transform parent = null) where T : BaseCharacter
     {
         BaseCharacter component = null;
 
@@ -84,6 +84,9 @@ public class PoolManager : BaseSingleton<PoolManager>
 
         component.Initialization();
         component.gameObject.SetActive(true);
+
+        // 부모 설정.
+        component.transform.SetParent(parent);
 
         return component;
     }

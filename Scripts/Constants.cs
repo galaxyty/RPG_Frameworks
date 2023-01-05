@@ -7,14 +7,14 @@ public class Constants : MonoBehaviour
     // 번들 레이블.
     public enum kLABLE
     {
-        scripts,
-        characters
+        script,
+        character
     }
 
     // 번들명.
     public enum kBUNDLE
     {
         ITEM,
-        PLAYER
+        Player,        
     }
 }
