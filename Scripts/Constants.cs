@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Constants : MonoBehaviour
 {
+    // 태그.
+    public enum kTAG
+    {
+        MainCanvas
+    }
+
     // 번들 레이블.
     public enum kLABLE
     {

@@ -91,6 +91,46 @@ public class PoolManager : BaseSingleton<PoolManager>
         return component;
     }
 
+    // 풀 오브젝트에서 가져온다.
+    public BaseCharacter Pop<T>(string tag) where T : BaseCharacter
+    {
+        BaseCharacter component = null;
+
+        // 풀 리스트에서 컴포넌트 가져옴.
+        m_PoolDisable.ForEach((data) =>
+        {
+            component = data.GetComponent<T>();
+
+            if (component != null)
+            {
+                // 활성화 리스트 추가.
+                m_PoolEnable.Add(component);
+                return;
+            }
+        });
+
+        // null 체크.
+        if (component == null)
+        {
+            Debug.Log("@@ " + typeof(T).ToString() + " 스크립트를 풀 오브젝트에 할당 해주세요");
+            return null;
+        }
+
+        // 비활성화 리스트 제거.
+        m_PoolDisable.Remove(component);
+
+        component.Initialization();
+        component.gameObject.SetActive(true);
+
+        // string으로 해당 태그 오브젝트 찾아온다.
+        Transform parent = GameObject.FindWithTag(tag).transform;
+
+        // 부모 설정.
+        component.transform.SetParent(parent);
+
+        return component;
+    }
+
     // 풀 오브젝트로 돌려보낸다.
     public void Push(BaseCharacter obj)
     {        
