@@ -55,9 +55,9 @@ public class PoolManager : BaseSingleton<PoolManager>
     }
 
     // 풀 오브젝트에서 가져온다.
-    public BaseCharacter Pop<T>(Transform parent = null) where T : BaseCharacter
+    public T Pop<T>(Transform parent = null) where T : BaseCharacter
     {
-        BaseCharacter component = null;
+        T component = null;
 
         // 풀 리스트에서 컴포넌트 가져옴.
         m_PoolDisable.ForEach((data) => 
@@ -92,9 +92,9 @@ public class PoolManager : BaseSingleton<PoolManager>
     }
 
     // 풀 오브젝트에서 가져온다.
-    public BaseCharacter Pop<T>(string tag) where T : BaseCharacter
+    public T Pop<T>(string tag) where T : BaseCharacter
     {
-        BaseCharacter component = null;
+        T component = null;
 
         // 풀 리스트에서 컴포넌트 가져옴.
         m_PoolDisable.ForEach((data) =>
