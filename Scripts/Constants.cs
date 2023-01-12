@@ -21,6 +21,8 @@ public class Constants : MonoBehaviour
     public enum kBUNDLE
     {
         ITEM,
-        Player,        
+        Player,
+        Inventory,
+        InventorySlot,
     }
 }

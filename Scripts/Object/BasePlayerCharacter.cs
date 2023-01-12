@@ -25,134 +25,136 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BaseRPG_V1;
 
-[RequireComponent(typeof(Rigidbody))]
-public class BasePlayerCharacter : BaseCharacter
+namespace BaseRPG_V1
 {
-    // 이동속도.
-    [SerializeField]
-    protected int m_Speed;
-
-    // 자신 리지드바디.
-    [SerializeField]
-    protected Rigidbody m_Rigidbody;
-
-    public override void Initialization()
+    [RequireComponent(typeof(Rigidbody))]
+    public class BasePlayerCharacter : BaseCharacter
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
-    }
+        // 이동속도.
+        [SerializeField]
+        protected int m_Speed;
 
-    public override void DisposeObject()
-    {   
-    }
+        // 자신 리지드바디.
+        [SerializeField]
+        protected Rigidbody m_Rigidbody;
 
-    // 캐릭터 이동 WSAD.
-    public virtual void Move()
-    {
-        // 키를 꾹 입력 했을 시.
-        if (Input.GetKey(KeyCode.W))
+        public override void Initialization()
         {
-            W_Key();
+            m_Rigidbody = GetComponent<Rigidbody>();
         }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            S_Key();
+        public override void DisposeObject()
+        {   
         }
 
-        if (Input.GetKey(KeyCode.A))
+        // 캐릭터 이동 WSAD.
+        public virtual void Move()
         {
-            A_Key();
+            // 키를 꾹 입력 했을 시.
+            if (Input.GetKey(KeyCode.W))
+            {
+                W_Key();
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                S_Key();
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                A_Key();
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                D_Key();
+            }
+
+
+
+            // 키를 떼었을 경우.
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                W_KeyUp();
+            }
+
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                S_KeyUp();
+            }
+
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                A_KeyUp();
+            }
+
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                D_KeyUp();
+            }
         }
 
-        if (Input.GetKey(KeyCode.D))
+        // 3인칭 마우스 회전.
+        public virtual void ThreeView()
         {
-            D_Key();
+            // 좌, 우 회전을 위해 마우스 회전 값 구해옴.
+            float posX = Input.GetAxis("Mouse X");
+
+            // 마우스 좌우 회전.
+            Quaternion qt = transform.rotation;
+            qt.eulerAngles = new Vector3(qt.eulerAngles.x, qt.eulerAngles.y + posX, qt.eulerAngles.z);
+
+            transform.rotation = qt;
         }
 
-
-
-        // 키를 떼었을 경우.
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            W_KeyUp();
+        // 앞 움직임.
+        public virtual void W_Key()
+        {        
+            m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, m_Speed);
         }
 
-        if (Input.GetKeyUp(KeyCode.S))
+        // 앞 움직임 키 뗐을 시.
+        public virtual void W_KeyUp()
         {
-            S_KeyUp();
+            m_Rigidbody.velocity = Vector3.zero;
         }
 
-        if (Input.GetKeyUp(KeyCode.A))
+        // 뒤 움직임.
+        public virtual void S_Key()
         {
-            A_KeyUp();
+            m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, -m_Speed);
         }
 
-        if (Input.GetKeyUp(KeyCode.D))
+        // 뒤 움직임 키 뗏을 시.
+        public virtual void S_KeyUp()
         {
-            D_KeyUp();
+            m_Rigidbody.velocity = Vector3.zero;
         }
-    }
 
-    // 3인칭 마우스 회전.
-    public virtual void ThreeView()
-    {
-        // 좌, 우 회전을 위해 마우스 회전 값 구해옴.
-        float posX = Input.GetAxis("Mouse X");
+        // 왼쪽 움직임.
+        public virtual void A_Key()
+        {
+            m_Rigidbody.velocity = transform.rotation * new Vector3(-m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
+        }
 
-        // 마우스 좌우 회전.
-        Quaternion qt = transform.rotation;
-        qt.eulerAngles = new Vector3(qt.eulerAngles.x, qt.eulerAngles.y + posX, qt.eulerAngles.z);
+        // 왼쪽 움직임 키 뗏을 시.
+        public virtual void A_KeyUp()
+        {
+            m_Rigidbody.velocity = Vector3.zero;
+        }
 
-        transform.rotation = qt;
-    }
+        // 오른쪽 움직임.
+        public virtual void D_Key()
+        {
+            m_Rigidbody.velocity = transform.rotation * new Vector3(m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
+        }
 
-    // 앞 움직임.
-    public virtual void W_Key()
-    {        
-        m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, m_Speed);
-    }
-
-    // 앞 움직임 키 뗐을 시.
-    public virtual void W_KeyUp()
-    {
-        m_Rigidbody.velocity = Vector3.zero;
-    }
-
-    // 뒤 움직임.
-    public virtual void S_Key()
-    {
-        m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, -m_Speed);
-    }
-
-    // 뒤 움직임 키 뗏을 시.
-    public virtual void S_KeyUp()
-    {
-        m_Rigidbody.velocity = Vector3.zero;
-    }
-
-    // 왼쪽 움직임.
-    public virtual void A_Key()
-    {
-        m_Rigidbody.velocity = transform.rotation * new Vector3(-m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
-    }
-
-    // 왼쪽 움직임 키 뗏을 시.
-    public virtual void A_KeyUp()
-    {
-        m_Rigidbody.velocity = Vector3.zero;
-    }
-
-    // 오른쪽 움직임.
-    public virtual void D_Key()
-    {
-        m_Rigidbody.velocity = transform.rotation * new Vector3(m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
-    }
-
-    // 오른쪽 움직임 키 뗏을 시.
-    public virtual void D_KeyUp()
-    {
-        m_Rigidbody.velocity = Vector3.zero;
+        // 오른쪽 움직임 키 뗏을 시.
+        public virtual void D_KeyUp()
+        {
+            m_Rigidbody.velocity = Vector3.zero;
+        }
     }
 }

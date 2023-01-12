@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace BaseRPG_V1
 {
-    public abstract class BaseCharacter : MonoBehaviour
+    public class BaseCharacter : BaseObject
     {
         // 체력.
         [SerializeField]
@@ -60,10 +60,12 @@ namespace BaseRPG_V1
             m_Hp = 0;
         }
 
-        // 풀 오브젝트 Pop 할 때마다 실행.
-        public abstract void Initialization();
+        public override void Initialization()
+        {            
+        }
 
-        // 풀 오브젝트 Push 할 때마다 실행.
-        public abstract void DisposeObject();
+        public override void DisposeObject()
+        {
+        }
     }
 }

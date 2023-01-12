@@ -6,19 +6,19 @@ using BaseRPG_V1;
 public class PoolManager : BaseSingleton<PoolManager>
 {
     // 풀 오브젝트 비활성화 리스트.
-    private List<BaseCharacter> m_PoolDisable = new List<BaseCharacter>();
+    private List<BaseObject> m_PoolDisable = new List<BaseObject>();
 
     // 풀 오브젝트 활성화 리스트.
-    private List<BaseCharacter> m_PoolEnable = new List<BaseCharacter>();
+    private List<BaseObject> m_PoolEnable = new List<BaseObject>();
 
     // 풀 오브젝트 생성.
-    public void Create<T>(string key, int count = 1) where T : BaseCharacter
+    public void Create<T>(string key, int count = 1) where T : BaseObject
     {
         // 재귀함수 종료.
         if (count-- <= 0)
             return;
 
-        BaseCharacter component = null;
+        BaseObject component = null;
 
         // 번들에서 프리팹 생성.
         BundleManager.Instance.Instantiate(key, (GameObject obj) => 
@@ -55,7 +55,7 @@ public class PoolManager : BaseSingleton<PoolManager>
     }
 
     // 풀 오브젝트에서 가져온다.
-    public T Pop<T>(Transform parent = null) where T : BaseCharacter
+    public T Pop<T>(Transform parent = null) where T : BaseObject
     {
         T component = null;
 
@@ -92,7 +92,7 @@ public class PoolManager : BaseSingleton<PoolManager>
     }
 
     // 풀 오브젝트에서 가져온다.
-    public T Pop<T>(string tag) where T : BaseCharacter
+    public T Pop<T>(string tag) where T : BaseObject
     {
         T component = null;
 
@@ -132,7 +132,7 @@ public class PoolManager : BaseSingleton<PoolManager>
     }
 
     // 풀 오브젝트로 돌려보낸다.
-    public void Push(BaseCharacter obj)
+    public void Push(BaseObject obj)
     {        
         // 비활성화 리스트로 보냄.
         m_PoolDisable.Add(obj);
