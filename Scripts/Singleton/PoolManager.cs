@@ -57,13 +57,16 @@ public class PoolManager : BaseSingleton<PoolManager>
     // 풀 오브젝트에서 가져온다.
     public T Pop<T>(Transform parent = null) where T : BaseObject
     {
+        // 풀 활성화에 담을 컴포넌트.
         T component = null;
 
-        // 풀 리스트에서 컴포넌트 가져옴.
+        // 풀 활성화에 담을 컴포넌트를 가져오기 위한 반복문.
         m_PoolDisable.ForEach((data) => 
         {
+            // 풀 활성화에 담을 컴포넌트 가져옴.
             component = data.GetComponent<T>();
 
+            // 성공적으로 가져오면 조건문 확인.
             if (component != null)
             {             
                 // 활성화 리스트 추가.
@@ -75,7 +78,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         // null 체크.
         if (component == null)
         {
-            Debug.Log("@@ " + typeof(T).ToString() + " 스크립트를 풀 오브젝트에 할당 해주세요");
+            Debug.Log("@@ " + typeof(T).ToString() + " 스크립트를 풀 오브젝트에 할당(Create) 해주세요");
             return null;
         }
 
@@ -94,13 +97,16 @@ public class PoolManager : BaseSingleton<PoolManager>
     // 풀 오브젝트에서 가져온다.
     public T Pop<T>(string tag) where T : BaseObject
     {
+        // 풀 활성화에 담을 컴포넌트.
         T component = null;
 
-        // 풀 리스트에서 컴포넌트 가져옴.
+        // 풀 활성화에 담을 컴포넌트를 가져오기 위한 반복문.
         m_PoolDisable.ForEach((data) =>
         {
+            // 풀 활성화에 담을 컴포넌트 가져옴.
             component = data.GetComponent<T>();
 
+            // 성공적으로 가져오면 조건문 확인.
             if (component != null)
             {
                 // 활성화 리스트 추가.
