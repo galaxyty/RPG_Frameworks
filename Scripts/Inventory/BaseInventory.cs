@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BaseRPG_V1;
 
-public class BaseInventory : BaseObject
+namespace BaseRPG_V1
 {
-    public override void Initialization()
+    public class BaseInventory : BaseObject
     {
-        ;
-    }
+        // 슬롯 갯수.
+        [SerializeField]
+        protected int m_Count;
 
-    public override void DisposeObject()
-    {
-        ;
+        // 그리드 영역.
+        [SerializeField]
+        protected GameObject m_Grid;
+
+        public override void Initialization()
+        {            
+        }
+
+        public override void DisposeObject()
+        {            
+        }
     }
 }

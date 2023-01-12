@@ -82,11 +82,11 @@ public class PoolManager : BaseSingleton<PoolManager>
         // 비활성화 리스트 제거.
         m_PoolDisable.Remove(component);
 
-        component.Initialization();
-        component.gameObject.SetActive(true);
-
         // 부모 설정.
         component.transform.SetParent(parent);
+
+        component.Initialization();
+        component.gameObject.SetActive(true);        
 
         return component;
     }
@@ -119,28 +119,36 @@ public class PoolManager : BaseSingleton<PoolManager>
         // 비활성화 리스트 제거.
         m_PoolDisable.Remove(component);
 
-        component.Initialization();
-        component.gameObject.SetActive(true);
-
         // string으로 해당 태그 오브젝트 찾아온다.
         Transform parent = GameObject.FindWithTag(tag).transform;
 
         // 부모 설정.
         component.transform.SetParent(parent);
 
+        component.Initialization();
+        component.gameObject.SetActive(true);               
+
         return component;
     }
 
     // 풀 오브젝트로 돌려보낸다.
     public void Push(BaseObject obj)
-    {        
+    {
+        obj.DisposeObject();
+        obj.gameObject.SetActive(false);
+        obj.gameObject.transform.SetParent(transform);
+        
         // 비활성화 리스트로 보냄.
         m_PoolDisable.Add(obj);
 
         // 활성화 리스트에서 제거.
-        m_PoolEnable.Remove(obj);
+        m_PoolEnable.Remove(obj);        
+    }
 
-        obj.DisposeObject();
-        obj.gameObject.SetActive(false);
+    // 리스트에 담아진 오브젝트들을 풀로 돌려보낸다.
+    public void PushList<T>(List<T> list) where T : BaseObject
+    {
+        list.ForEach((slot) => Push(slot));
+        list.Clear();
     }
 }
