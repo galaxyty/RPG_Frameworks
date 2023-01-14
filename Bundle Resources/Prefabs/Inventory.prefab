@@ -91,7 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Count: 5
   m_Grid: {fileID: 4151116492913281499}
-  m_ListOfSlot: []
 --- !u!1 &4151116492913281499
 GameObject:
   m_ObjectHideFlags: 0

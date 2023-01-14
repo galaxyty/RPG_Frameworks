@@ -6,7 +6,7 @@ using BaseRPG_V1;
 public class UIBaseInventory : BaseInventory
 {
     // 인벤토리 슬롯.
-    public List<UIBaseInventorySlot> m_ListOfSlot = new List<UIBaseInventorySlot>();
+    private List<UIBaseInventorySlot> m_ListOfSlot = new List<UIBaseInventorySlot>();
 
     private void Awake() 
     {

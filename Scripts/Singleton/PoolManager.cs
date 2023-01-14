@@ -128,11 +128,27 @@ public class PoolManager : BaseSingleton<PoolManager>
         // string으로 해당 태그 오브젝트 찾아온다.
         Transform parent = GameObject.FindWithTag(tag).transform;
 
+        // 태그 존재 null 체크.
+        if (parent == null)
+        {
+            Debug.Log("@@ " + tag + " 태그가 존재하지 않습니다");
+            return null;
+        }
+
         // 부모 설정.
         component.transform.SetParent(parent);
 
+        // Rect Transform 존재하는 컴포넌트인지 가져온다.
+        RectTransform rect = component.GetComponent<RectTransform>();
+
+        // Rect가 존재하는 컴포넌트일 경우, 로컬 좌표를 오브젝트에 원래 좌표로 바꾼다. (UI 들은 부모가 바뀌면 좌표가 바껴서 생성 위치가 이상해지는데 이를 막기 위함).
+        if (rect != null)
+        {
+            rect.localPosition = rect.position;
+        }
+
         component.Initialization();
-        component.gameObject.SetActive(true);               
+        component.gameObject.SetActive(true);
 
         return component;
     }
