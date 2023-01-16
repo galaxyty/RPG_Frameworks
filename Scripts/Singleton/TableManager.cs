@@ -5,10 +5,10 @@ using BaseRPG_V1;
 
 public class TableManager : BaseSingleton<TableManager>
 {
-    // 아이템 테이블 반환.
-    public ItemData GetItemData()
+    // 아이템 리스트 테이블 반환.
+    public ItemListData GetItemData()
     {
-        var table = GetTable<ItemData>(Constants.kBUNDLE.ITEM.ToString());
+        var table = GetTable<ItemListData>(Constants.kBUNDLE.ITEM.ToString());
 
         if (table == null)
             return null;

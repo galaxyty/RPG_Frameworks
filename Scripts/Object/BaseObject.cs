@@ -9,7 +9,7 @@ namespace BaseRPG_V1
 {
     public abstract class BaseObject : MonoBehaviour
     {
-        // 풀 오브젝트 Pop 할 때마다 실행.
+        // 풀 오브젝트 생성 시 실행.
         public abstract void Initialization();
 
         // 풀 오브젝트 Push 할 때마다 실행.

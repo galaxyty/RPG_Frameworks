@@ -1,4 +1,12 @@
 {
-	"INDEX" : 0,
-	"ITEM_NAME" : "집행검"
+	"ITEM" : [
+		{
+			"INDEX": 12,
+			"ITEM_NAME": "집행검"
+		},
+		{
+			"INDEX": 13,
+			"ITEM_NAME": "집행검2"
+		}
+	]	
 }

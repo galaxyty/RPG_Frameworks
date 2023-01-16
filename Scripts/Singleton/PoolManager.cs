@@ -46,6 +46,9 @@ public class PoolManager : BaseSingleton<PoolManager>
                 return;
             }
 
+            // 생성 시 함수 실행.
+            component.Initialization();
+
             // 비활성화 리스트 추가.
             m_PoolDisable.Add(component);
 
@@ -86,9 +89,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         m_PoolDisable.Remove(component);
 
         // 부모 설정.
-        component.transform.SetParent(parent);
-
-        component.Initialization();
+        component.transform.SetParent(parent);        
         component.gameObject.SetActive(true);        
 
         return component;
@@ -146,8 +147,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         {
             rect.localPosition = rect.position;
         }
-
-        component.Initialization();
+        
         component.gameObject.SetActive(true);
 
         return component;
@@ -174,7 +174,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         // 부모 변경.
         obj.gameObject.transform.SetParent(transform);
 
-        // 부모 변경 시 바뀌므로 담아둔 좌표로 되돌림.
+        // 부모 변경 시 좌표가 바뀌므로 담아둔 좌표로 되돌림.
         if (rect)
         {
             rect.localPosition = vector;
