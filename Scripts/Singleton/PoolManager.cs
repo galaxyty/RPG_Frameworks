@@ -156,15 +156,35 @@ public class PoolManager : BaseSingleton<PoolManager>
     // 풀 오브젝트로 돌려보낸다.
     public void Push(BaseObject obj)
     {
+        // UI 기본 좌표.
+        Vector3 vector = Vector3.zero;
+
+        // UI Rect.
+        RectTransform rect = obj.GetComponent<RectTransform>();
+
+        // Rect Transform 좌표 미리 담아둠.
+        if (rect)
+        {
+            vector = rect.localPosition;
+        }
+
         obj.DisposeObject();
         obj.gameObject.SetActive(false);
+
+        // 부모 변경.
         obj.gameObject.transform.SetParent(transform);
+
+        // 부모 변경 시 바뀌므로 담아둔 좌표로 되돌림.
+        if (rect)
+        {
+            rect.localPosition = vector;
+        }
         
         // 비활성화 리스트로 보냄.
         m_PoolDisable.Add(obj);
 
         // 활성화 리스트에서 제거.
-        m_PoolEnable.Remove(obj);        
+        m_PoolEnable.Remove(obj);
     }
 
     // 리스트에 담아진 오브젝트들을 풀로 돌려보낸다.
