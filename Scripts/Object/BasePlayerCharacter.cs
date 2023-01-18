@@ -31,6 +31,21 @@ namespace BaseRPG_V1
     [RequireComponent(typeof(Rigidbody))]
     public class BasePlayerCharacter : BaseCharacter
     {
+        // 애니메이터 이넘.
+        public enum kMOVE
+        {
+            None = 0,
+            Forward,
+            Back,
+            Left,
+            Right,
+            ForwardLeft,
+            ForwardRight,
+            BackLeft,
+            BackRight,
+            Attack
+        }
+
         // 이동속도.
         [SerializeField]
         protected int m_Speed;
