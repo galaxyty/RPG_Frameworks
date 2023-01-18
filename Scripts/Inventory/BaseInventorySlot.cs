@@ -4,11 +4,8 @@ using UnityEngine;
 
 namespace BaseRPG_V1
 {
-    public class BaseInventorySlot : BaseObject
-    {
-        // 아이템 인덱스.
-        protected int m_Index;        
-        
+    public abstract class BaseInventorySlot : BaseObject
+    {   
         public override void Initialization()
         {
         }
@@ -16,5 +13,8 @@ namespace BaseRPG_V1
         public override void DisposeObject()
         {
         }
+
+        // 터치 이벤트.
+        public abstract void OnTouchEvent();
     }
 }

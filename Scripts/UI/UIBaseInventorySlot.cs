@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BaseRPG_V1;
 using UnityEngine.UI;
@@ -35,5 +33,13 @@ public class UIBaseInventorySlot : BaseInventorySlot
 
         m_TextOfIndex.gameObject.SetActive(true);
         m_TextOfIndex.text = m_Data.INDEX.ToString();
+    }
+
+    public override void OnTouchEvent()
+    {
+        if (m_Data == null)
+            return;
+            
+        Debug.Log(m_Data.INDEX);
     }
 }
