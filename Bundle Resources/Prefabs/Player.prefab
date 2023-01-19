@@ -1899,6 +1899,7 @@ MonoBehaviour:
   m_Rigidbody: {fileID: 2312053136581642826}
   m_Animator: {fileID: 7033455320432561726}
   m_Slot: []
+  m_Mesh: {fileID: 2931093657941874649}
 --- !u!1 &4126164719873952329
 GameObject:
   m_ObjectHideFlags: 0
