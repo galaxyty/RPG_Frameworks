@@ -7,8 +7,9 @@
     1. WSAD 이동 구현.
     2. 마우스를 통해 좌, 우 회전 구현.
     3. m_Speed 변수를 통해 이동속도 조절 가능.
+    4. 좌클릭 함수 추가.
 
-    Move함수와 ThreeView함수는 상속받으면 Update문에 선언해줄 것.
+    Move함수와 ThreeView함수, LeftClick 함수는 상속받으면 Update문에 선언해줄 것.
 
     ex)
     public class Player : BasePlayerCharacter
@@ -122,6 +123,20 @@ namespace BaseRPG_V1
             qt.eulerAngles = new Vector3(qt.eulerAngles.x, qt.eulerAngles.y + posX, qt.eulerAngles.z);
 
             transform.rotation = qt;
+        }
+
+        // 좌클릭 함수.
+        public virtual void LeftClick()
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                OnLeftClick();   
+            }
+        }
+
+        // 좌클릭 이벤트 구현 함수.
+        public virtual void OnLeftClick()
+        {
         }
 
         // 앞 움직임.
