@@ -7,7 +7,9 @@ public class Constants : MonoBehaviour
     // 태그.
     public enum kTAG
     {
-        MainCanvas
+        Player,
+        MainCanvas,
+        Weapon
     }
 
     // 번들 레이블.
