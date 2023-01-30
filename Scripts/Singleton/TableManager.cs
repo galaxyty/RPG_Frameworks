@@ -6,9 +6,9 @@ using BaseRPG_V1;
 public class TableManager : BaseSingleton<TableManager>
 {
     // 아이템 리스트 테이블 반환.
-    public ItemListData GetItemData()
+    public List<ItemData> GetItemData()
     {
-        var table = GetTable<ItemListData>(Constants.kBUNDLE.ITEM.ToString());
+        var table = GetTable<ItemListData>(Constants.kBUNDLE.ITEM.ToString()).ITEM;
 
         if (table == null)
             return null;
@@ -16,10 +16,21 @@ public class TableManager : BaseSingleton<TableManager>
         return table;
     }
 
-    // 해당 Key 테이블 반환.
-    private T GetTable<T>(string key)
+    // 포션 리스트 테이블 반환.
+    public List<PorsionData> GetPorsionData()
+    {
+        var table = GetTable<PorsionListData>(Constants.kBUNDLE.PORSION.ToString()).PORSION;
+
+        if (table == null)
+            return null;
+        
+        return table;
+    }
+
+    // 해당 Addressable 이름의 테이블 반환.
+    private T GetTable<T>(string name)
     {    
-        TextAsset text = BundleManager.Instance.LoadToScripts(key);
+        TextAsset text = BundleManager.Instance.LoadToScript(name);
 
         return JsonUtility.FromJson<T>(text.ToString());
     }

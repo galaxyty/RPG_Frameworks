@@ -12,7 +12,7 @@ public class PoolManager : BaseSingleton<PoolManager>
     private List<BaseObject> m_PoolEnable = new List<BaseObject>();
 
     // 풀 오브젝트 생성.
-    public void Create<T>(string key, int count = 1) where T : BaseObject
+    public void Create<T>(string name, int count = 1) where T : BaseObject
     {
         // 재귀함수 종료.
         if (count-- <= 0)
@@ -21,12 +21,12 @@ public class PoolManager : BaseSingleton<PoolManager>
         BaseObject component = null;
 
         // 번들에서 프리팹 생성.
-        BundleManager.Instance.Instantiate(key, (GameObject obj) => 
+        BundleManager.Instance.Instantiate(name, (GameObject obj) => 
         {
             // null 체크.
             if (obj == null)
             {
-                Debug.Log("@@ " + key + "오브젝트가 존재하지 않아 생성할 수 없습니다");
+                Debug.Log("@@ " + name + "오브젝트가 존재하지 않아 생성할 수 없습니다");
                 return;
             }
             
@@ -53,7 +53,7 @@ public class PoolManager : BaseSingleton<PoolManager>
             m_PoolDisable.Add(component);
 
             // 갯수만큼 생성.
-            Create<T>(key, count);
+            Create<T>(name, count);
         });
     }
 
@@ -61,14 +61,13 @@ public class PoolManager : BaseSingleton<PoolManager>
     public T Pop<T>(Transform parent = null) where T : BaseObject
     {
         // 풀 활성화에 담을 컴포넌트.
-        T component = null;
+        T component = default(T);
 
-        // 풀 활성화에 담을 컴포넌트를 가져오기 위한 반복문.
-        m_PoolDisable.ForEach((data) => 
-        {
-            // 풀 활성화에 담을 컴포넌트 가져옴.
-            component = data.GetComponent<T>();
-        });
+        // 타입.
+        Type type = typeof(T);
+
+        // 풀 활성화에 담을 컴포넌트를 찾는다.
+        component = m_PoolDisable.Find(foundData => foundData.GetType() == type).GetComponent<T>();
 
         // null 체크.
         if (component == null)
@@ -94,14 +93,13 @@ public class PoolManager : BaseSingleton<PoolManager>
     public T Pop<T>(string tag) where T : BaseObject
     {
         // 풀 활성화에 담을 컴포넌트.
-        T component = null;
+        T component = default(T);
 
-        // 풀 활성화에 담을 컴포넌트를 가져오기 위한 반복문.
-        m_PoolDisable.ForEach((data) =>
-        {
-            // 풀 활성화에 담을 컴포넌트 가져옴.
-            component = data.GetComponent<T>();
-        });
+        // 타입.
+        Type type = typeof(T);
+
+        // 풀 활성화에 담을 컴포넌트를 찾는다.
+        component = m_PoolDisable.Find(foundData => foundData.GetType() == type).GetComponent<T>();
 
         // null 체크.
         if (component == null)
@@ -190,16 +188,11 @@ public class PoolManager : BaseSingleton<PoolManager>
         // 풀 오브젝트.
         T component = default(T);
 
-        // 풀 활성화에 담아진 오브젝트 중에 풀 오브젝트 가져온다.
-        m_PoolEnable.ForEach((data) =>
-        {
-            // 풀 활성화에 담을 컴포넌트 가져옴.
-            component = data.GetComponent<T>();
+        // 타입.
+        Type type = typeof(T);
 
-            // 성공적으로 가져오면 종료.
-            if (component != null)
-                return;
-        });
+        // 풀 활성화에 담아진 오브젝트 중에 풀 오브젝트 가져온다.
+        component = m_PoolEnable.Find(foundData => foundData.GetType() == type).GetComponent<T>();
 
         return component;
     }

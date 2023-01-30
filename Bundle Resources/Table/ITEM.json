@@ -1,12 +1,19 @@
 {
 	"ITEM" : [
 		{
-			"INDEX": 12,
+			"INDEX" : 100,
+			"ITEM_TYPE" : 2,
+			"ITEM_NAME": "빨간 포션"
+		},
+		{
+			"INDEX" : 300,
+			"ITEM_TYPE" : 0,
 			"ITEM_NAME": "집행검"
 		},
 		{
-			"INDEX": 13,
-			"ITEM_NAME": "집행검2"
+			"INDEX" : 350,
+			"ITEM_TYPE" : 1,
+			"ITEM_NAME" : "견습 아머"
 		}
 	]	
 }

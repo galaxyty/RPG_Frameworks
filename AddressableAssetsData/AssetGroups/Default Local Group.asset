@@ -30,11 +30,53 @@ MonoBehaviour:
   - m_GUID: 65b39f568c2692b4493582ca8aa34c9a
     m_Address: Inventory
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - ui
   - m_GUID: 686258b250fe99b42938a83301282cb4
     m_Address: InventorySlot
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - ui
+  - m_GUID: 5d9ba4e7d0964044ea54abe409d81dfd
+    m_Address: 101
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+  - m_GUID: 2f1eaeeaad36ee5469eff7ff158f37ba
+    m_Address: 350
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+  - m_GUID: 172774604c1bee84185a69041576525b
+    m_Address: 301
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+  - m_GUID: 5d7061fc7da05ce44add317708ec7215
+    m_Address: 302
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+  - m_GUID: e52ea25af699fd445b7046374f81a5b9
+    m_Address: 100
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+  - m_GUID: 6592b916f86b19e428db6f6847c7b6dd
+    m_Address: 150
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+  - m_GUID: 5fd50594014b70e48bd6993443d46b32
+    m_Address: 300
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+  - m_GUID: 914504194aed4884ca724c41790ce657
+    m_Address: PORSION
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - script
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f9f1fb743484790428eae4d1e30a95fd, type: 2}
   m_SchemaSet:

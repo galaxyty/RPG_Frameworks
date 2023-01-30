@@ -54,6 +54,12 @@ namespace BaseRPG_V1
             }
         }
 
+        // 체력 회복 함수.
+        public virtual void CureHP(int hp)
+        {
+            m_Hp += hp;
+        }
+
         // 사망 시 호출 될 함수.
         public virtual void Die()
         {

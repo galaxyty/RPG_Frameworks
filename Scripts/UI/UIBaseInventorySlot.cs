@@ -8,6 +8,10 @@ public class UIBaseInventorySlot : BaseInventorySlot
     [SerializeField]
     protected Text m_TextOfIndex;
 
+    // 아이템 이미지.
+    [SerializeField]
+    protected Image m_ImageOfItem;
+
     // 아이템 소지 데이터.
     protected ItemData m_Data;
 
@@ -23,6 +27,8 @@ public class UIBaseInventorySlot : BaseInventorySlot
         base.DisposeObject();
 
         m_TextOfIndex.gameObject.SetActive(false);
+        m_TextOfIndex.text = null;
+        m_ImageOfItem.sprite = null;
         m_Data = null;
     }
 
@@ -31,8 +37,13 @@ public class UIBaseInventorySlot : BaseInventorySlot
     {
         m_Data = data;
 
+        if (m_Data == null) 
+            return;
+
         m_TextOfIndex.gameObject.SetActive(true);
         m_TextOfIndex.text = m_Data.INDEX.ToString();
+
+        m_ImageOfItem.sprite = BundleManager.Instance.LoadToItem(m_Data.INDEX.ToString());
     }
 
     public override void OnTouchEvent()
@@ -40,6 +51,17 @@ public class UIBaseInventorySlot : BaseInventorySlot
         if (m_Data == null)
             return;
             
-        Debug.Log(m_Data.INDEX);
+        var data = TableManager.Instance.GetPorsionData().Find(foundData => foundData.ITEM_INDEX == m_Data.INDEX);
+
+        if (data == null)
+            return;
+            
+        var player = PoolManager.Instance.GetObject<PlayerController>();
+
+        if (player == null)
+            return;
+        
+        // 체력 회복.
+        player.CureHP(data.HP);
     }
 }
