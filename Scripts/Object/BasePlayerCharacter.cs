@@ -8,6 +8,7 @@
     2. 마우스를 통해 좌, 우 회전 구현.
     3. m_Speed 변수를 통해 이동속도 조절 가능.
     4. 좌클릭 함수 추가.
+    5. 인벤토리 추가.
 
     Move함수와 ThreeView함수, LeftClick 함수는 상속받으면 Update문에 선언해줄 것.
 
@@ -54,6 +55,17 @@ namespace BaseRPG_V1
         // 자신 리지드바디.
         [SerializeField]
         protected Rigidbody m_Rigidbody;
+
+        // 인벤토리 아이템.
+        protected List<ItemData> m_Inventory = new List<ItemData>();
+
+        public List<ItemData> Inventory
+        {
+            get
+            {
+                return m_Inventory;
+            }
+        }
 
         public override void Initialization()
         {

@@ -192,7 +192,14 @@ public class PoolManager : BaseSingleton<PoolManager>
         Type type = typeof(T);
 
         // 풀 활성화에 담아진 오브젝트 중에 풀 오브젝트 가져온다.
-        component = m_PoolEnable.Find(foundData => foundData.GetType() == type).GetComponent<T>();
+        var data = m_PoolEnable.Find(foundData => foundData.GetType() == type);
+
+        // null 체크.
+        if (data == null)
+            return component;
+
+        // 컴포넌트 가져옴.
+        component = data.GetComponent<T>();
 
         return component;
     }
