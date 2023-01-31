@@ -35,33 +35,22 @@ public class UIBaseInventorySlot : BaseInventorySlot
     // 인벤토리 슬롯 업데이트.
     public void UpdateUI(ItemData data)
     {
+        // 데이터 넣기.
         m_Data = data;
 
+        // null 체크.
         if (m_Data == null) 
             return;
 
+        // ui 갱신.
         m_TextOfIndex.gameObject.SetActive(true);
         m_TextOfIndex.text = m_Data.INDEX.ToString();
-
-        m_ImageOfItem.sprite = BundleManager.Instance.LoadToItem(m_Data.INDEX.ToString());
     }
 
+    // 인벤토리 슬롯 버튼.
     public override void OnTouchEvent()
     {
         if (m_Data == null)
             return;
-            
-        var data = TableManager.Instance.GetPorsionData().Find(foundData => foundData.ITEM_INDEX == m_Data.INDEX);
-
-        if (data == null)
-            return;
-            
-        var player = PoolManager.Instance.GetObject<PlayerController>();
-
-        if (player == null)
-            return;
-        
-        // 체력 회복.
-        player.CureHP(data.HP);
     }
 }

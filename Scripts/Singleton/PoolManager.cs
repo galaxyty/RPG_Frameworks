@@ -72,7 +72,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         // null 체크.
         if (component == null)
         {
-            Debug.Log("@@ " + typeof(T).ToString() + " 스크립트를 풀 오브젝트에 할당(Create) 해주세요");
+            Debug.Log("@@ " + type.ToString() + " 스크립트를 풀 오브젝트에 할당(Create) 해주세요");
             return null;
         }
 
@@ -104,7 +104,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         // null 체크.
         if (component == null)
         {
-            Debug.Log("@@ " + typeof(T).ToString() + " 스크립트를 풀 오브젝트에 할당 해주세요");
+            Debug.Log("@@ " + type.ToString() + " 스크립트를 풀 오브젝트에 할당 해주세요");
             return null;
         }
 
