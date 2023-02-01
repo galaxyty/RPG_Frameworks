@@ -20,7 +20,6 @@ public class UIInventorySlot : BaseInventorySlot
         base.Initialization();
 
         m_TextOfIndex.gameObject.SetActive(false);
-        m_ImageOfItem.sprite = BundleManager.Instance.LoadToSprite(Constants.kBUNDLE.UIInventorySlot.ToString());
     }
 
     public override void DisposeObject()
@@ -29,7 +28,7 @@ public class UIInventorySlot : BaseInventorySlot
 
         m_TextOfIndex.gameObject.SetActive(false);
         m_TextOfIndex.text = null;
-        m_ImageOfItem.sprite = BundleManager.Instance.LoadToSprite(Constants.kBUNDLE.UIInventorySlot.ToString());
+        m_ImageOfItem.sprite = null;
         m_Data = null;
     }
 

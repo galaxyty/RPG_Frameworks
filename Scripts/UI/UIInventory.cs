@@ -12,8 +12,6 @@ public class UIInventory : BaseInventory
     {
         base.Initialization();
 
-        m_ImageOfBG.sprite = BundleManager.Instance.LoadToSprite(Constants.kBUNDLE.UIInventory.ToString());
-
         // 인벤토리 슬롯 풀 생성.
         PoolManager.Instance.Create<UIInventorySlot>(Constants.kBUNDLE.InventorySlot.ToString(), m_Count);        
     }

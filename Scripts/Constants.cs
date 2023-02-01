@@ -27,7 +27,5 @@ public class Constants : MonoBehaviour
         Player,
         Inventory,
         InventorySlot,
-        UIInventory,
-        UIInventorySlot
     }
 }
