@@ -20,6 +20,7 @@ public class UIInventorySlot : BaseInventorySlot
         base.Initialization();
 
         m_TextOfIndex.gameObject.SetActive(false);
+        m_ImageOfItem.sprite = BundleManager.Instance.LoadToSprite(Constants.kBUNDLE.UIInventorySlot.ToString());
     }
 
     public override void DisposeObject()
@@ -28,7 +29,7 @@ public class UIInventorySlot : BaseInventorySlot
 
         m_TextOfIndex.gameObject.SetActive(false);
         m_TextOfIndex.text = null;
-        m_ImageOfItem.sprite = null;
+        m_ImageOfItem.sprite = BundleManager.Instance.LoadToSprite(Constants.kBUNDLE.UIInventorySlot.ToString());
         m_Data = null;
     }
 
@@ -45,7 +46,7 @@ public class UIInventorySlot : BaseInventorySlot
         // ui 갱신.
         m_TextOfIndex.gameObject.SetActive(true);
         m_TextOfIndex.text = m_Data.INDEX.ToString();
-        m_ImageOfItem.sprite = BundleManager.Instance.LoadToItem(m_Data.INDEX.ToString());
+        m_ImageOfItem.sprite = BundleManager.Instance.LoadToSprite(m_Data.INDEX.ToString());
     }
 
     // 포션 아이템.

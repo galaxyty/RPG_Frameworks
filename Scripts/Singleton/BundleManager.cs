@@ -7,7 +7,7 @@ using BaseRPG_V1;
 
 public class BundleManager : BaseSingleton<BundleManager>
 {
-    // script 레이블에서 해당 Addressable 이름의 JSON 로드 (동기).
+    // 해당 Addressable 이름의 JSON 로드 (동기).
     public TextAsset LoadToScript(string name)
     {
         TextAsset text = Addressables.LoadAssetAsync<TextAsset>(name).WaitForCompletion();
@@ -15,8 +15,8 @@ public class BundleManager : BaseSingleton<BundleManager>
         return text;
     }
 
-    // item 레이블에서 해당 Addressable 이름의 Sprite 이미지 로드 (동기).
-    public Sprite LoadToItem(string name)
+    // 해당 Addressable 이름의 Sprite 이미지 로드 (동기).
+    public Sprite LoadToSprite(string name)
     {
         Sprite sprite = Addressables.LoadAssetAsync<Sprite>(name).WaitForCompletion();
 
