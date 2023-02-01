@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b63d7a4ecb34e94bbd99cead58a1a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ImageOfBG: {fileID: 4151116492889534176}
   m_Count: 5
   m_Grid: {fileID: 4151116492913281499}
 --- !u!1 &4151116492913281499

@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BaseRPG_V1
 {
     public class BaseInventory : BaseObject
     {
+        // 스프라이트.
+        [SerializeField]
+        protected Image m_ImageOfBG;
+
         // 슬롯 갯수.
         [Header("슬롯 생성 갯수")]
         [SerializeField]
