@@ -11,11 +11,16 @@ namespace BaseRPG_V1
     {
         // 체력.
         [SerializeField]
-        private int m_Hp = 0;    
+        protected int m_Hp = 0;    
 
         // 최대 체력.
         [SerializeField]
-        private int m_MaxHp = 0;
+        protected int m_MaxHp = 0;
+
+        // 공격력.
+        [SerializeField]
+
+        protected int m_AttackPower = 0;
 
         // 체력 프로퍼티.
         public int Hp
@@ -33,7 +38,16 @@ namespace BaseRPG_V1
             {
                 return m_MaxHp;
             }
-        }        
+        }
+
+        // 공격력 프로퍼티.
+        public int AttackPower
+        {
+            get
+            {
+                return m_AttackPower;
+            }
+        }
 
         // 타격 함수.
         public virtual void Attack()
@@ -58,6 +72,12 @@ namespace BaseRPG_V1
         public virtual void CureHP(int hp)
         {
             m_Hp += hp;
+
+            // 최대 HP 못 넘게 막아놓기.
+            if (m_Hp > m_MaxHp)
+            {
+                m_Hp = m_MaxHp;
+            }
         }
 
         // 사망 시 호출 될 함수.

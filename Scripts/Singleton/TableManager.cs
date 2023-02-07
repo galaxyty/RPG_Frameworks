@@ -27,6 +27,17 @@ public class TableManager : BaseSingleton<TableManager>
         return table;
     }
 
+    // 장비 리스트 테이블 반환.
+    public List<JangbiData> GetJangbiData()
+    {
+        var table = GetTable<JangbiListData>(Constants.kBUNDLE.JANGBI.ToString()).JANGBI;
+
+        if (table == null)
+            return null;
+        
+        return table;
+    }
+
     // 해당 Addressable 이름의 테이블 반환.
     private T GetTable<T>(string name)
     {    
