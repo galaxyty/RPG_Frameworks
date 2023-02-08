@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class JangbiData
+public class EquipmentData
 {
     // 장비 인덱스.
     public int INDEX;

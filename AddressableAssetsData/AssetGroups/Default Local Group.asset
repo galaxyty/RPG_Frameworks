@@ -98,7 +98,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - ui
   - m_GUID: e58af440909f2454d9d74fb27b1a5358
-    m_Address: JANGBI
+    m_Address: EQUIPMENT
     m_ReadOnly: 0
     m_SerializedLabels:
     - script

@@ -4,7 +4,7 @@ using UnityEngine;
 
 // 장비 테이블 리스트.
 [System.Serializable]
-public class JangbiListData
+public class EquipmentListData
 {
-    public List<JangbiData> JANGBI = new List<JangbiData>();
+    public List<EquipmentData> JANGBI = new List<EquipmentData>();
 }

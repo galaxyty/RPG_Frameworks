@@ -31,6 +31,6 @@ public class Constants : MonoBehaviour
         UIInventorySlot,
         UICustomInventory,
         UICustomInventorySlot,
-        JANGBI
+        EQUIPMENT
     }
 }
