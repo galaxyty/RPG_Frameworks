@@ -30,7 +30,7 @@ public class TableManager : BaseSingleton<TableManager>
     // 장비 리스트 테이블 반환.
     public List<EquipmentData> GetEquipmentData()
     {
-        var table = GetTable<EquipmentListData>(Constants.kBUNDLE.EQUIPMENT.ToString()).JANGBI;
+        var table = GetTable<EquipmentListData>(Constants.kBUNDLE.EQUIPMENT.ToString()).EQUIPMENT;
 
         if (table == null)
             return null;

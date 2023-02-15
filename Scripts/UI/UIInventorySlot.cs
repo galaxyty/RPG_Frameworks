@@ -49,7 +49,7 @@ public class UIInventorySlot : BaseInventorySlot
     }
 
     // 포션 아이템.
-    private void UsePorsion()
+    protected void UsePorsion()
     {
         // 포션 아이템.
         var porsion = TableManager.Instance.GetPorsionData().Find(foundData => foundData.ITEM_INDEX == m_Data.INDEX);
@@ -79,18 +79,21 @@ public class UIInventorySlot : BaseInventorySlot
     {
         // null 체크.
         if (m_Data == null)
-            return;
+            return;        
         
         switch (m_Data.ITEM_TYPE)
         {
             case ItemData.kITEM_TYPE.Weapon:
+                // 무기 착용 구현.
                 break;
             
             case ItemData.kITEM_TYPE.Porsion:
+                // 포션 사용 구현.
                 UsePorsion();
                 break;
             
             case ItemData.kITEM_TYPE.Armor:
+                // 방어구 착용 구현.
                 break;
         }
     }

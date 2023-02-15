@@ -6,5 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class EquipmentListData
 {
-    public List<EquipmentData> JANGBI = new List<EquipmentData>();
+    public List<EquipmentData> EQUIPMENT = new List<EquipmentData>();
 }

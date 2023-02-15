@@ -9,6 +9,7 @@
     3. m_Speed 변수를 통해 이동속도 조절 가능.
     4. 좌클릭 함수 추가.
     5. 인벤토리 추가.
+    6. 장비 장착 추가.
 
     Move함수와 ThreeView함수, LeftClick 함수는 상속받으면 Update문에 선언해줄 것.
 
@@ -56,9 +57,16 @@ namespace BaseRPG_V1
         [SerializeField]
         protected Rigidbody m_Rigidbody;
 
+        // 무기.
+        protected EquipmentData m_Weapon = null;
+
+        // 방어구.
+        protected EquipmentData m_Armor = null;
+
         // 인벤토리 아이템.
         protected List<ItemData> m_Inventory = new List<ItemData>();
 
+        // 인벤토리.
         public List<ItemData> Inventory
         {
             get
@@ -197,6 +205,82 @@ namespace BaseRPG_V1
         public virtual void D_KeyUp()
         {
             m_Rigidbody.velocity = Vector3.zero;
+        }
+
+        // 무기 장착.
+        public void UpdateWeapon(EquipmentData data)
+        {
+            // null 체크.
+            if (data == null)
+                return;
+
+            if (m_Weapon == null)
+            {
+                // 장착.
+                m_Weapon = data;
+                m_AttackPower += data.ATTACK;
+            }
+            else
+            {
+                // 해제.
+                m_Weapon = null;
+                m_AttackPower -= data.ATTACK;
+            }
+        }
+
+        // 무기 장착 (오버로딩).
+        public void UpdateWeapon(ItemData data)
+        {
+            // null 체크.
+            if (data == null)
+                return;
+            
+            var equit = TableManager.Instance.GetEquipmentData();
+
+            // null 체크.
+            if (equit == null)
+                return;
+            
+            var found = equit.Find(foundData => foundData.ITEM_INDEX == data.INDEX);
+
+            UpdateWeapon(found);
+        }
+
+        // 방어구 장착.
+        public void UpdateArmor(EquipmentData data)
+        {
+            m_Armor = data;
+
+            if (m_Armor == null)
+            {
+                // 장착.
+                m_Armor = data;
+                m_Defense += data.DEFENSE;
+            }
+            else
+            {
+                // 해제.
+                m_Armor = null;
+                m_Defense -= data.DEFENSE;
+            }
+        }
+
+        // 방어구 장착 (오버로딩).
+        public void UpdateArmor(ItemData data)
+        {
+            // null 체크.
+            if (data == null)
+                return;
+
+            var equit = TableManager.Instance.GetEquipmentData();
+
+            // null 체크.
+            if (equit == null)
+                return;
+
+            var found = equit.Find(foundData => foundData.ITEM_INDEX == data.INDEX);
+
+            UpdateArmor(found);
         }
     }
 }

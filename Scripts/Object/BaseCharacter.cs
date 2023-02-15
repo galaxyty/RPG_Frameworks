@@ -22,6 +22,10 @@ namespace BaseRPG_V1
 
         protected int m_AttackPower = 0;
 
+        // 방어력.
+        [SerializeField]
+        protected int m_Defense = 0;
+
         // 체력 프로퍼티.
         public int Hp
         {
@@ -46,6 +50,15 @@ namespace BaseRPG_V1
             get
             {
                 return m_AttackPower;
+            }
+        }
+
+        // 방어력 프로퍼티.
+        public int Defense
+        {
+            get
+            {
+                return m_Defense;
             }
         }
 
