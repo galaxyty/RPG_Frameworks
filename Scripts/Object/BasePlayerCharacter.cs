@@ -58,10 +58,28 @@ namespace BaseRPG_V1
         protected Rigidbody m_Rigidbody;
 
         // 무기.
-        protected EquipmentData m_Weapon = null;
+        protected EquipmentData m_Weapon;
 
         // 방어구.
-        protected EquipmentData m_Armor = null;
+        protected EquipmentData m_Armor;
+
+        // 무기 래퍼런스.
+        public EquipmentData Weapon
+        {
+            get
+            {
+                return m_Weapon;
+            }
+        }
+
+        // 방어구 래퍼런스.
+        public EquipmentData Armor
+        {
+            get
+            {
+                return m_Armor;
+            }
+        }
 
         // 인벤토리 아이템.
         protected List<ItemData> m_Inventory = new List<ItemData>();
@@ -78,6 +96,8 @@ namespace BaseRPG_V1
         public override void Initialization()
         {
             m_Rigidbody = GetComponent<Rigidbody>();
+            m_Weapon = null;
+            m_Armor = null;
         }
 
         public override void DisposeObject()
@@ -249,7 +269,9 @@ namespace BaseRPG_V1
         // 방어구 장착.
         public void UpdateArmor(EquipmentData data)
         {
-            m_Armor = data;
+            // null 체크.
+            if (data == null)
+                return;
 
             if (m_Armor == null)
             {

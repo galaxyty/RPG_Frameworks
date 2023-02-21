@@ -6,7 +6,7 @@ using BaseRPG_V1;
 public class UIInventory : BaseInventory
 {
     // 인벤토리 슬롯.
-    private List<UIInventorySlot> m_ListOfSlot = new List<UIInventorySlot>();    
+    private List<UIInventorySlot> m_ListOfSlot = new List<UIInventorySlot>();
 
     public override void Initialization()
     {
@@ -33,6 +33,7 @@ public class UIInventory : BaseInventory
             var obj = PoolManager.Instance.Pop<UIInventorySlot>(m_Grid.transform);            
             m_ListOfSlot.Add(obj);
 
+            // 아이템 있으면 표시, 없으면 기본 표시.
             if (list.Count <= i)
                 continue;
 
