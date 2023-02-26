@@ -1,20 +1,8 @@
 using UnityEngine;
 using BaseRPG_V1;
-using UnityEngine.UI;
 
 public class UIInventorySlot : BaseInventorySlot
 {
-    // 인덱스 텍스트 UI.
-    [SerializeField]
-    protected Text m_TextOfIndex;
-
-    // 아이템 이미지.
-    [SerializeField]
-    protected Image m_ImageOfItem;
-
-    // 아이템 소지 데이터.
-    protected ItemData m_Data;
-
     public override void Initialization()
     {
         base.Initialization();
