@@ -33,6 +33,8 @@ public class Constants : MonoBehaviour
         UICustomInventorySlot,
         EQUIPMENT,
         Equitment,
-        EquitmentSlot
+        EquitmentSlot,
+        UICustomEquitment,
+        UICustomEquitmentSlot
     }
 }
