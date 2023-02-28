@@ -234,6 +234,7 @@ namespace BaseRPG_V1
             if (data == null)
                 return;
 
+            // 무기 장착중인지 확인.
             if (m_Weapon == null)
             {
                 // 장착.
@@ -273,6 +274,7 @@ namespace BaseRPG_V1
             if (data == null)
                 return;
 
+            // 방어구 장착중인지 확인.
             if (m_Armor == null)
             {
                 // 장착.
