@@ -26,6 +26,9 @@ namespace BaseRPG_V1
         [SerializeField]
         protected int m_Defense = 0;
 
+        // 레벨.
+        protected int m_Level = 0;
+
         // 체력 프로퍼티.
         public int Hp
         {
@@ -59,6 +62,15 @@ namespace BaseRPG_V1
             get
             {
                 return m_Defense;
+            }
+        }
+
+        // 레벨 프로퍼티.
+        public int Level
+        {
+            get
+            {
+                return m_Level;
             }
         }
 
