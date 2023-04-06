@@ -29,6 +29,12 @@ namespace BaseRPG_V1
         // 레벨.
         protected int m_Level = 0;
 
+        // 경험치.
+        protected int m_Exp = 0;
+
+        // 목표 레벨업 경험치.
+        protected int m_TargetExp = 0;
+
         // 체력 프로퍼티.
         public int Hp
         {
@@ -71,6 +77,24 @@ namespace BaseRPG_V1
             get
             {
                 return m_Level;
+            }
+        }
+
+        // 경험치 프로퍼티.
+        public int Exp
+        {
+            get
+            {
+                return m_Exp;
+            }
+        }
+
+        // 목표 경험치 프로퍼티.
+        public int TargetExp
+        {
+            get
+            {
+                return m_TargetExp;
             }
         }
 

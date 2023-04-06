@@ -38,4 +38,10 @@ public class Constants : MonoBehaviour
         UICustomEquitmentSlot,
         UICharacter
     }
+
+    // 몬스터명.
+    public enum kMONSTER
+    {
+        Enemy
+    }
 }
