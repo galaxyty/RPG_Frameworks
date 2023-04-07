@@ -43,6 +43,7 @@ public class SpawnEnemy : MonoBehaviour
         // 풀매니저에서 생성한 몬스터 필드에 생성.
         var obj = PoolManager.Instance.Pop<EnemyController>(transform);
         obj.spawnEnemy = this;
+        obj.Index = TableManager.Instance.GetMonsterData().Find(foundData => foundData.INDEX == 1).INDEX;
         m_currentCount++;
 
         // 최대 인원수 넘으면 생성 종료.

@@ -36,7 +36,9 @@ public class Constants : MonoBehaviour
         EquitmentSlot,
         UICustomEquitment,
         UICustomEquitmentSlot,
-        UICharacter
+        UICharacter,
+        MONSTER,
+        LEVEL
     }
 
     // 몬스터명.

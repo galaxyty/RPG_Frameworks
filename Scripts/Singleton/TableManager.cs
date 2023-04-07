@@ -38,6 +38,28 @@ public class TableManager : BaseSingleton<TableManager>
         return table;
     }
 
+    // 몬스터 리스트 테이블 반환.
+    public List<MonsterData> GetMonsterData()
+    {
+        var table = GetTable<MonsterListData>(Constants.kBUNDLE.MONSTER.ToString()).MONSTER;
+
+        if (table == null)
+            return null;
+
+        return table;
+    }
+
+    // 레벨 리스트 테이블 반환.
+    public List<LevelData> GetLevelData()
+    {
+        var table = GetTable<LevelListData>(Constants.kBUNDLE.LEVEL.ToString()).LEVEL;
+
+        if (table == null)
+            return null;
+
+        return table;
+    }
+
     // 해당 Addressable 이름의 테이블 반환.
     private T GetTable<T>(string name)
     {    
