@@ -140,7 +140,8 @@ MonoBehaviour:
   - m_GUID: bd4091a151d452d4dbd5b0fe5fe3495f
     m_Address: LEVEL
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - script
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f9f1fb743484790428eae4d1e30a95fd, type: 2}
   m_SchemaSet:
