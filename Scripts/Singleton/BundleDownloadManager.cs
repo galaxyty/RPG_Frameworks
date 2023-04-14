@@ -25,6 +25,7 @@ public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
                     {
                         // 다운로드 실패 시 에러.
                         failCallback();
+                        return;
                     }
 
                     // 다운로드 성공.
