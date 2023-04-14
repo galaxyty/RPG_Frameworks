@@ -32,7 +32,7 @@ MonoBehaviour:
   m_RemoteCatalogBuildPath:
     m_Id: 550efce32a2b64a4aac7886d9ca53834
   m_RemoteCatalogLoadPath:
-    m_Id: 550efce32a2b64a4aac7886d9ca53834
+    m_Id: 2428ffef6a4521c48ba3afdb994d22be
   m_ContentStateBuildPath: 
   m_overridePlayerVersion: 1
   m_GroupAssets:
@@ -58,7 +58,7 @@ MonoBehaviour:
       - m_Id: 550efce32a2b64a4aac7886d9ca53834
         m_Value: ServerData/[BuildTarget]
       - m_Id: 2428ffef6a4521c48ba3afdb994d22be
-        m_Value: http://localhost/[BuildTarget]
+        m_Value: https://freebuckets.s3.ap-northeast-2.amazonaws.com/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: af8fc9047d871324cba8b94a904b8568
       m_Name: BuildTarget

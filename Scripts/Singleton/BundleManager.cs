@@ -24,7 +24,7 @@ public class BundleManager : BaseSingleton<BundleManager>
         return sprite;
     }
 
-    // Addressable 이름의 오브젝트 씬에 생성 (동기).
+    // Addressable 이름의 오브젝트를 씬에 생성 (동기).
     public void Instantiate(string name, Action<GameObject> callback)
     {
         GameObject obj = Addressables.InstantiateAsync(name).WaitForCompletion();
