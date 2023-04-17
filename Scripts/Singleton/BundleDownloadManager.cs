@@ -39,4 +39,23 @@ public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
             }
         };
     }
+
+    // 번들 다운로드 받았는지 확인하고 콜백함수 실행.
+    public void DownloadCheck(string name, Action callback, Action alreadycallback)
+    {
+        Addressables.GetDownloadSizeAsync(name).Completed += (size) => 
+        {
+            // 번들 다운로드 할 것이 있는지 체크.
+            if (size.Status == AsyncOperationStatus.Succeeded && size.Result > 0)
+            {
+                // 다운로드 받아야하는 콜백.
+                callback();
+            }
+            else
+            {
+                // 이미 다운로드 완료 상태라 다음 단계로 진행하는 콜백.
+                alreadycallback();
+            }
+        };
+    }
 }
