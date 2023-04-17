@@ -9,6 +9,10 @@ using BaseRPG_V1;
 // 서버 번들 다운로드.
 public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
 {
+    private void Start() {
+        DownloadBundleAsync("Player");
+    }
+
     // 번들 다운로드.
     public void DownloadBundleAsync(string name, Action callback = null, Action failCallback = null)
     {
@@ -24,17 +28,32 @@ public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
                     if ( ((AsyncOperationHandle)download).Status != AsyncOperationStatus.Succeeded)
                     {
                         // 다운로드 실패 시 에러.
+                        if (failCallback == null)
+                        {
+                            return;
+                        }
+
                         failCallback();
                         return;
                     }
 
                     // 다운로드 성공.
+                    if (callback == null)
+                    {
+                        return;
+                    }
+
                     callback();
                 };
             }
             else
             {
                 // 이미 다운로드 완료 상태.
+                if (callback == null)
+                {
+                    return;
+                }
+                
                 callback();
             }
         };
