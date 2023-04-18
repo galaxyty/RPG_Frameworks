@@ -9,10 +9,6 @@ using BaseRPG_V1;
 // 서버 번들 다운로드.
 public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
 {
-    private void Start() {
-        DownloadBundleAsync("Player");
-    }
-
     // 번들 다운로드.
     public void DownloadBundleAsync(string name, Action callback = null, Action failCallback = null)
     {
@@ -60,7 +56,7 @@ public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
     }
 
     // 번들 다운로드 받았는지 확인하고 콜백함수 실행.
-    public void DownloadCheck(string name, Action callback, Action alreadycallback)
+    public void DownloadCheck(string name, Action callback = null, Action alreadycallback = null)
     {
         Addressables.GetDownloadSizeAsync(name).Completed += (size) => 
         {
@@ -68,11 +64,21 @@ public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
             if (size.Status == AsyncOperationStatus.Succeeded && size.Result > 0)
             {
                 // 다운로드 받아야하는 콜백.
+                if (callback == null)
+                {
+                    return;
+                }
+
                 callback();
             }
             else
             {
                 // 이미 다운로드 완료 상태라 다음 단계로 진행하는 콜백.
+                if (alreadycallback == null)
+                {
+                    return;
+                }
+                
                 alreadycallback();
             }
         };
