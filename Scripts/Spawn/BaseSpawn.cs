@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace BaseRPG_V1
 {
-    public abstract class BaseSpawn : MonoBehaviour
+    public abstract class BaseSpawn : BaseObject
     {
         [Header("생성 할 몬스터 수")]
         [SerializeField]
@@ -20,10 +20,11 @@ namespace BaseRPG_V1
         // 현재 생성한 몬스터 수.
         protected int m_currentCount;
 
+        // 생성 코루틴.
         private IEnumerator cor = null;
 
-        // Start is called before the first frame update
-        private void Start()
+        // 스폰 몬스터 최초 생성.
+        private void Start() 
         {
             for (int i = 0; i < m_Count; i++)
             {
@@ -31,7 +32,7 @@ namespace BaseRPG_V1
             }
 
             StartSpawn();
-        }
+        }        
 
         // 일정 시간 마다 스폰시킬 대상 (풀매니저 Create).
         public abstract void SpawnCreate();
@@ -64,6 +65,14 @@ namespace BaseRPG_V1
 
             // 스폰 다시 시작.
             StartSpawn();
+        }
+
+        public override void Initialization()
+        {
+        }
+
+        public override void DisposeObject()
+        {
         }
     }
 }
