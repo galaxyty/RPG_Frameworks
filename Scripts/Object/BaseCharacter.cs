@@ -134,12 +134,18 @@ namespace BaseRPG_V1
         {
             m_Exp += exp;
 
-            // 목표 경험치량 도달 시 레벨업하고 경험치를 0으로 리셋.
+            // 레벨업.
             if (m_MaxExp <= m_Exp)
             {
-                m_Level += 1;
-                m_Exp = 0;
+                LevelUP();
             }
+        }
+
+        // 레벨업 함수.
+        public virtual void LevelUP()
+        {
+            m_Level += 1;
+            m_Exp = 0;
         }
 
         // 사망 시 호출 될 함수.
