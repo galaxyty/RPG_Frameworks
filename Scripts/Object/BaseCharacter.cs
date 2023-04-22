@@ -87,11 +87,6 @@ namespace BaseRPG_V1
             {
                 return m_Exp;
             }
-
-            set
-            {
-                m_Exp = value;
-            }
         }
 
         // 목표 경험치 프로퍼티.
@@ -131,6 +126,19 @@ namespace BaseRPG_V1
             if (m_Hp > m_MaxHp)
             {
                 m_Hp = m_MaxHp;
+            }
+        }
+
+        // 경험치 획득 함수.
+        public virtual void SetEXP(int exp)
+        {
+            m_Exp += exp;
+
+            // 목표 경험치량 도달 시 레벨업하고 경험치를 0으로 리셋.
+            if (m_MaxExp <= m_Exp)
+            {
+                m_Level += 1;
+                m_Exp = 0;
             }
         }
 
