@@ -83,6 +83,7 @@ MonoBehaviour:
     - script
     - character
     - item
+    - effect
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 87c865bc4e1ba7b4bac01447d41ce3e2, type: 2}

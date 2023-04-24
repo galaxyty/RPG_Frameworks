@@ -1896,6 +1896,7 @@ MonoBehaviour:
   m_Hp: 10
   m_MaxHp: 10
   m_AttackPower: 1
+  m_Defense: 0
   m_Speed: 20
   m_Rigidbody: {fileID: 2312053136581642826}
   m_Animator: {fileID: 7033455320432561726}

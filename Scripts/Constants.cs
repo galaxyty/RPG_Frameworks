@@ -39,7 +39,8 @@ public class Constants : MonoBehaviour
         UICharacter,
         MONSTER,
         LEVEL,
-        SpawnEnemy
+        SpawnEnemy,
+        EfLevelUp
     }
 
     // 몬스터명.

@@ -147,6 +147,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ui
+  - m_GUID: 41caabb81e9bb9f468feae7e763002e2
+    m_Address: EfLevelUp
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - effect
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f9f1fb743484790428eae4d1e30a95fd, type: 2}
   m_SchemaSet:

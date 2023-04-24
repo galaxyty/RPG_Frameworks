@@ -14,5 +14,11 @@ namespace BaseRPG_V1
 
         // 풀 오브젝트 Push 할 때마다 실행.
         public abstract void DisposeObject();
+
+        // 로컬 포지션 초기화.
+        public void ResetLocalPosition()
+        {
+            transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        }
     }
 }
