@@ -25,6 +25,7 @@
  
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -145,6 +146,26 @@ namespace BaseRPG_V1
             }
         }
 
+        // 조이스틱 이동.
+        protected void JoystickMove(float x, float z, Action callback)
+        {
+            Vector3 moveVec = new Vector3(x, 0.0f, z) * m_Speed * Time.deltaTime;
+            m_Rigidbody.MovePosition(m_Rigidbody.position + moveVec);
+
+            // 움직이는 중인가?.
+            if (moveVec.sqrMagnitude == 0)
+            {
+                return;
+            }
+
+            Quaternion dirQuqt = Quaternion.LookRotation(moveVec);
+            Quaternion moveQuqt = Quaternion.Slerp(m_Rigidbody.rotation, dirQuqt, 0.3f);
+            m_Rigidbody.MoveRotation(moveQuqt);
+
+            // 이동 후 콜백.
+            callback();
+        }
+
         // 3인칭 마우스 회전.
         public virtual void ThreeView()
         {
@@ -174,8 +195,9 @@ namespace BaseRPG_V1
 
         // 앞 움직임.
         public virtual void W_Key()
-        {        
-            m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, m_Speed);
+        {
+            Vector3 moveVec = new Vector3(0.0f, 0.0f, 1.0f) * m_Speed * Time.deltaTime;
+            m_Rigidbody.MovePosition(m_Rigidbody.position + moveVec);            
         }
 
         // 앞 움직임 키 뗐을 시.
@@ -187,7 +209,8 @@ namespace BaseRPG_V1
         // 뒤 움직임.
         public virtual void S_Key()
         {
-            m_Rigidbody.velocity = transform.rotation * new Vector3(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y, -m_Speed);
+            Vector3 moveVec = new Vector3(0.0f, 0.0f, -1.0f) * m_Speed * Time.deltaTime;
+            m_Rigidbody.MovePosition(m_Rigidbody.position + moveVec);
         }
 
         // 뒤 움직임 키 뗏을 시.
@@ -199,7 +222,8 @@ namespace BaseRPG_V1
         // 왼쪽 움직임.
         public virtual void A_Key()
         {
-            m_Rigidbody.velocity = transform.rotation * new Vector3(-m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
+            Vector3 moveVec = new Vector3(-1.0f, 0.0f, 0.0f) * m_Speed * Time.deltaTime;
+            m_Rigidbody.MovePosition(m_Rigidbody.position + moveVec);
         }
 
         // 왼쪽 움직임 키 뗏을 시.
@@ -211,7 +235,8 @@ namespace BaseRPG_V1
         // 오른쪽 움직임.
         public virtual void D_Key()
         {
-            m_Rigidbody.velocity = transform.rotation * new Vector3(m_Speed, m_Rigidbody.velocity.y, m_Rigidbody.velocity.z);
+            Vector3 moveVec = new Vector3(1.0f, 0.0f, 0.0f) * m_Speed * Time.deltaTime;
+            m_Rigidbody.MovePosition(m_Rigidbody.position + moveVec);
         }
 
         // 오른쪽 움직임 키 뗏을 시.
