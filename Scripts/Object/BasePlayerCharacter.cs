@@ -39,13 +39,6 @@ namespace BaseRPG_V1
         {
             None = 0,
             Forward,
-            Back,
-            Left,
-            Right,
-            ForwardLeft,
-            ForwardRight,
-            BackLeft,
-            BackRight,
             Attack
         }
 

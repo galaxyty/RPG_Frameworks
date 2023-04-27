@@ -40,7 +40,9 @@ public class Constants : MonoBehaviour
         MONSTER,
         LEVEL,
         SpawnEnemy,
-        EfLevelUp
+        EfLevelUp,
+        Joystick,
+        PlayerCamera
     }
 
     // 몬스터명.

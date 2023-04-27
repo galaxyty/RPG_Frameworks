@@ -152,6 +152,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - effect
+  - m_GUID: ec536a7718376554185e4a856d5ae230
+    m_Address: Joystick
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+  - m_GUID: ed533a7c584f933429b9bd9416f9bf75
+    m_Address: PlayerCamera
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - character
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f9f1fb743484790428eae4d1e30a95fd, type: 2}
   m_SchemaSet:
