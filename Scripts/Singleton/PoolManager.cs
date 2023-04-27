@@ -133,7 +133,11 @@ public class PoolManager : BaseSingleton<PoolManager>
         // Rect가 존재하는 컴포넌트일 경우, 로컬 좌표를 오브젝트에 원래 좌표로 바꾼다. (UI 들은 부모가 바뀌면 좌표가 바껴서 생성 위치가 이상해지는데 이를 막기 위함).
         if (rect != null)
         {
+            // 부모가 바뀌면 Position을 다시 원래 값으로 변경.
             rect.localPosition = rect.position;
+
+            // 부모가 바뀌면 Scale도 원래 값으로 변경. 이는 해상도에 따라 크기가 달라지는걸 막기 위함.
+            rect.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         
         component.gameObject.SetActive(true);
