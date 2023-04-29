@@ -42,7 +42,13 @@ public class Constants : MonoBehaviour
         SpawnEnemy,
         EfLevelUp,
         Joystick,
-        PlayerCamera
+        PlayerCamera,
+        UIRadius,
+        UIHandle,
+        UIInformation,
+        UILevel,
+        UIHPFrame,
+        UIHP
     }
 
     // 몬스터명.
