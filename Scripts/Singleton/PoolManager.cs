@@ -88,6 +88,9 @@ public class PoolManager : BaseSingleton<PoolManager>
         // 위치랑 크기 원래대로.
         ReturnTransform(component.GetComponent<RectTransform>());
 
+        // Trasform 달린 객체는 회전 값도 원래대로.
+        ReturnTransform(component.GetComponent<Transform>());
+
         component.gameObject.SetActive(true);        
 
         return component;
@@ -211,6 +214,23 @@ public class PoolManager : BaseSingleton<PoolManager>
 
         // 부모가 바뀌면 Position을 다시 원래 값으로 변경.
         transform.localPosition = transform.position;
+
+        // 부모가 바뀌면 Scale도 원래 값으로 변경. 이는 해상도에 따라 크기가 달라지는걸 막기 위함.
+        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+    }
+
+    // 다른 부모로 옮겨서 어긋난 Position, Scale, EulerAngle값을 원래대로 돌려놓은다.
+    private void ReturnTransform(Transform transform)
+    {
+        // null 체크.
+        if (transform == null)
+            return;
+
+        // 부모가 바뀌면 Position을 다시 원래 값으로 변경.
+        transform.localPosition = transform.position;
+
+        // transform 달린 객체는 회전 값도 원래 값으로 변경.
+        transform.localEulerAngles = transform.eulerAngles;
 
         // 부모가 바뀌면 Scale도 원래 값으로 변경. 이는 해상도에 따라 크기가 달라지는걸 막기 위함.
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);

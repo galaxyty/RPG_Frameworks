@@ -41,6 +41,7 @@ public class Constants : MonoBehaviour
         LEVEL,
         SpawnEnemy,
         EfLevelUp,
+        EfFireBall,
         Joystick,
         PlayerCamera,
         UIRadius,
