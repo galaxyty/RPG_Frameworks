@@ -9,6 +9,10 @@ namespace BaseRPG_V1
 {
     public abstract class BaseSpawn : BaseObject
     {
+        [Header("스폰시킬 몬스터 인덱스")]
+        [SerializeField]
+        protected int m_SpawnIndex;
+
         [Header("생성 할 몬스터 수")]
         [SerializeField]
         private int m_Count;
