@@ -41,7 +41,7 @@ public class Constants : MonoBehaviour
         LEVEL,
         SpawnEnemy,
         EfLevelUp,
-        EfFireBall,
+        EfFireSlash,
         Joystick,
         PlayerCamera,
         UIRadius,
@@ -49,7 +49,8 @@ public class Constants : MonoBehaviour
         UIInformation,
         UILevel,
         UIHPFrame,
-        UIHP
+        UIHP,
+        UIAttackButton
     }
 
     // 몬스터명.

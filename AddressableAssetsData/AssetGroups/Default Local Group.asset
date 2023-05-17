@@ -193,7 +193,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ui
   - m_GUID: a590c04abd57be544b50a1b51a6674ac
-    m_Address: EfFireBall
+    m_Address: EfFireSlash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - effect
+  - m_GUID: 23d9d7c397043ef4d8c13f590f8b6cac
+    m_Address: UIAttackButton
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
