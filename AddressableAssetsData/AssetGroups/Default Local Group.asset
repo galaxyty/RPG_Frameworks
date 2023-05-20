@@ -200,7 +200,8 @@ MonoBehaviour:
   - m_GUID: 23d9d7c397043ef4d8c13f590f8b6cac
     m_Address: UIAttackButton
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - ui
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f9f1fb743484790428eae4d1e30a95fd, type: 2}
   m_SchemaSet:
