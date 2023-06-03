@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Constants : MonoBehaviour
 {
+    // DB 유저.
+    public static readonly string kDB_USER = "USER";
+
     // 태그.
     public enum kTAG
     {

@@ -26,4 +26,7 @@ public class ItemData
 
     // 아이템 타입.
     public kITEM_TYPE ITEM_TYPE;
+
+    // 수량.
+    public int QTY;
 }
