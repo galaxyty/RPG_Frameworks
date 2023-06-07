@@ -205,21 +205,21 @@ public class PoolManager : BaseSingleton<PoolManager>
         return component;
     }
 
-    // 다른 부모로 옮겨서 어긋난 Position이랑 Scale을 원래대로 돌려놓은다.
+    // 다른 부모로 옮겨서 어긋난 AnchoredPosition이랑 Scale을 원래대로 돌려놓은다 (UI용).
     private void ReturnTransform(RectTransform transform)
     {
         // null 체크.
         if (transform == null)
             return;
 
-        // 부모가 바뀌면 Position을 다시 원래 값으로 변경.
-        transform.localPosition = transform.position;
+        // 부모가 바뀌면 AnchoredPosition을 다시 원래 값으로 변경.
+        transform.anchoredPosition = transform.position;
 
         // 부모가 바뀌면 Scale도 원래 값으로 변경. 이는 해상도에 따라 크기가 달라지는걸 막기 위함.
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
 
-    // 다른 부모로 옮겨서 어긋난 Position, Scale, EulerAngle값을 원래대로 돌려놓은다.
+    // 다른 부모로 옮겨서 어긋난 Position, Scale, EulerAngle값을 원래대로 돌려놓은다 (3D 오브젝트용).
     private void ReturnTransform(Transform transform)
     {
         // null 체크.
