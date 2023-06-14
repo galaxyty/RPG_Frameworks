@@ -9,6 +9,12 @@ using BaseRPG_V1;
 // 서버 번들 다운로드.
 public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
 {
+    // 번들 용량 코루틴.
+    private IEnumerator m_IBundleSize = null;
+
+    // 번들 다운로드 퍼센트.
+    public float Percent;
+
     // 번들 다운로드.
     public void DownloadBundleAsync(string name, Action callback = null, Action failCallback = null)
     {
@@ -17,9 +23,18 @@ public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
             // 번들 다운로드 할 것이 있는지 체크.
             if (size.Status == AsyncOperationStatus.Succeeded && size.Result > 0)
             {
+                // 번들 용량 비동기 실행 코루틴 넣기.
+                m_IBundleSize = IBundleSize(name);
+
+                // 번들 용량 비동기 코루틴 실행.
+                StartCoroutine(m_IBundleSize);
+
                 // 번들 다운로드.
                 Addressables.DownloadDependenciesAsync(name, true).Completed += (download) =>
                 {
+                    // 번들 용량 비동기 코루틴 중지.
+                    StopCoroutine(m_IBundleSize);
+
                     // 다운로드가 성공적으로 완료되었는지 확인.
                     if ( ((AsyncOperationHandle)download).Status != AsyncOperationStatus.Succeeded)
                     {
@@ -82,5 +97,15 @@ public class BundleDownloadManager : BaseSingleton<BundleDownloadManager>
                 alreadycallback();
             }
         };
+    }
+
+    // 번들 용량 비동기용.
+    private IEnumerator IBundleSize(string name)
+    {
+        while (true)
+        {
+            Percent = Addressables.DownloadDependenciesAsync(name).PercentComplete;
+            yield return null;
+        }
     }
 }
