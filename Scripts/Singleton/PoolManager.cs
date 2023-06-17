@@ -212,8 +212,18 @@ public class PoolManager : BaseSingleton<PoolManager>
         if (transform == null)
             return;
 
-        // 부모가 바뀌면 AnchoredPosition을 다시 원래 값으로 변경.
-        transform.anchoredPosition = transform.position;
+        // 해상도 크기에 따른 UI 크기 조정.
+        if ((transform.anchorMin.x == transform.anchorMax.x) && (transform.anchorMin.y == transform.anchorMax.y))
+        {
+            // stretch가 아닐 때, 부모가 바뀌면 AnchoredPosition을 다시 원래 값으로 변경.
+            transform.anchoredPosition = transform.position;
+        }
+        else
+        {
+            // stretch가 일 경우, 상하좌우 크기 0.
+            transform.offsetMin = new Vector2(0.0f, 0.0f);
+            transform.offsetMax = new Vector2(0.0f, 0.0f);
+        }
 
         // 부모가 바뀌면 Scale도 원래 값으로 변경. 이는 해상도에 따라 크기가 달라지는걸 막기 위함.
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
