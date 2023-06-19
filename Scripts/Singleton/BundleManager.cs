@@ -23,6 +23,14 @@ public class BundleManager : BaseSingleton<BundleManager>
         return sprite;
     }
 
+    // 해당 Addressable 이름의 AudioClip 로드 (동기).
+    public AudioClip LoadToAudioClip(string name)
+    {
+        AudioClip clip = Addressables.LoadAssetAsync<AudioClip>(name).WaitForCompletion();
+
+        return clip;
+    }
+
     // Addressable 이름의 오브젝트를 씬에 생성 (동기).
     public void Instantiate(string name, Action<GameObject> callback)
     {

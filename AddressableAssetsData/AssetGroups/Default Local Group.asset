@@ -202,11 +202,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ui
-  - m_GUID: ee0f1fc1b466bcd4bb1465b78198b5dc
-    m_Address: House01
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ui
   - m_GUID: a19d4d48ea39e154d8c197e2cd3e0af7
     m_Address: UIMainMenuButton
     m_ReadOnly: 0
@@ -217,6 +212,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ui
+  - m_GUID: 3e43f0198540bf74f80cdb1723bf14b2
+    m_Address: Map
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+  - m_GUID: 465ba6c19b403be40bfa32e9801bbcbf
+    m_Address: main
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sound
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f9f1fb743484790428eae4d1e30a95fd, type: 2}
   m_SchemaSet:

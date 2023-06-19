@@ -55,7 +55,9 @@ public class Constants : MonoBehaviour
         UIHP,
         UIAttackButton,
         UIMainMenuButton,
-        MainMenu
+        MainMenu,
+        Map,
+        main
     }
 
     // 몬스터명.
