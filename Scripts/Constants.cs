@@ -57,7 +57,13 @@ public class Constants : MonoBehaviour
         UIMainMenuButton,
         MainMenu,
         Map,
-        main
+        main,
+        UIMainInventory,
+        UIMainEquitment,
+        UIMainSkill,
+        UIMainInventoryButton,
+        UIMainEquitmentButton,
+        UIMainSkillButton
     }
 
     // 몬스터명.

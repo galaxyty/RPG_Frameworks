@@ -222,6 +222,36 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - sound
+  - m_GUID: b97c91e8b348f3f4ebdc11f5c82182cd
+    m_Address: UIMainEquitment
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+  - m_GUID: fe025e83f69d0b54f8a4fe3c7c128fd7
+    m_Address: UIMainInventory
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+  - m_GUID: ae496f5dad56ea645b72d374a0376368
+    m_Address: UIMainSkill
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+  - m_GUID: 4794d48308958314c9de682b6761afbb
+    m_Address: UIMainEquitmentButton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+  - m_GUID: 51697613757e5134b8c2bd5f9666318b
+    m_Address: UIMainInventoryButton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+  - m_GUID: 5c99f3b12247e1145b2df288d67a4779
+    m_Address: UIMainSkillButton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f9f1fb743484790428eae4d1e30a95fd, type: 2}
   m_SchemaSet:
