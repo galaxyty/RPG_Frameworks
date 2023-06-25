@@ -220,7 +220,7 @@ public class PoolManager : BaseSingleton<PoolManager>
         }
         else
         {
-            // stretch가 일 경우, 상하좌우 크기 0.
+            // stretch 일 경우, 상하좌우 크기 0.
             transform.offsetMin = new Vector2(0.0f, 0.0f);
             transform.offsetMax = new Vector2(0.0f, 0.0f);
         }

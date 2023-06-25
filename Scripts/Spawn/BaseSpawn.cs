@@ -15,7 +15,7 @@ namespace BaseRPG_V1
 
         [Header("생성 할 몬스터 수")]
         [SerializeField]
-        private int m_Count;
+        protected int m_Count;
 
         [Header("생성 주기 시간")]
         [SerializeField]
@@ -30,10 +30,7 @@ namespace BaseRPG_V1
         // 스폰 몬스터 최초 생성.
         private void Start() 
         {
-            for (int i = 0; i < m_Count; i++)
-            {
-                SpawnCreate();
-            }
+            SpawnCreate();
 
             StartSpawn();
         }        
