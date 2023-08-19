@@ -34,16 +34,12 @@ namespace BaseRPG_V1
             // 오브젝트 이름 재정의.
             obj.name = type.ToString();
 
-            // 싱글톤 스크립트 생성.
-            obj.AddComponent<T>();
+            // 싱글톤 스크립트 생성 후 추가.
+            m_Instance = obj.AddComponent<T>();
         }
 
         private void Awake() 
         {
-            // 이 싱글톤이 탄생했으면 자기 자신을 넣어준다.
-            m_Instance = this as T;
-
-            // 씬 파괴 막아놓기.
             DontDestroyOnLoad(this);
         }
     }
