@@ -1,0 +1,16 @@
+{
+	"EQUIPMENT" : [
+		{
+			"INDEX" : 1,
+			"ITEM_INDEX" : 300,
+			"ATTACK" : 10,
+			"DEFENSE" : 0
+		},
+		{
+			"INDEX" : 2,
+			"ITEM_INDEX" : 350,
+			"ATTACK" : 0,
+			"DEFENSE" : 20
+		}
+	]	
+}
