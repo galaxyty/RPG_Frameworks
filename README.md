@@ -8,3 +8,4 @@ File -> Build Settings -> Player Settings -> Other Settings -> Allow 'unsafe' Co
 - CodeStage(Anti-Cheat-ToolKit)를 통해 메모리 변조 방지
 - 오브젝트 풀링 제작하여 메모리 재사용
 - 테이블 매니저를 제작하여 Json 데이터 관리 및 이용
+- 플레이어, 몬스터 추상클래스 제작
